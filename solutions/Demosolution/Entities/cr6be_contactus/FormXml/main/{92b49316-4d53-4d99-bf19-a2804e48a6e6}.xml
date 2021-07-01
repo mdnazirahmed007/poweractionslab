@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{92b49316-4d53-4d99-bf19-a2804e48a6e6}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form shownavigationbar="true" showImage="false" maxWidth="1920">
+      <tabs>
+        <tab verticallayout="true" id="{cb5d24ae-1079-4fc8-9a40-05492c8bc99e}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="33%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{eee0ae5c-eaf3-4baa-af3e-1c65e7ad86c6}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{e22d41a8-4adb-409e-bafb-f4fd59f4fc58}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="ID" languagecode="1033" />
+                        </labels>
+                        <control id="cr6be_id" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cr6be_id" uniqueid="{43416250-136b-0c38-ad02-3d75576a10cd}" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b6960c1a-7ae6-0590-2bdd-329e83a89364}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Start Date" languagecode="1033" />
+                        </labels>
+                        <control id="cr6be_startdate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="cr6be_startdate" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{103e229e-81de-3373-d4d1-c3a4b70406c0}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="End Date" languagecode="1033" />
+                        </labels>
+                        <control id="cr6be_enddate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="cr6be_enddate" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{96cb392a-d840-218c-8e9c-6eded363b6e4}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Week Days" languagecode="1033" />
+                        </labels>
+                        <control id="cr6be_weekdays" classid="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}" datafieldname="cr6be_weekdays" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{45ec77b5-bb5b-5a86-4444-90ecac5aed67}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Contact Details" languagecode="1033" />
+                        </labels>
+                        <control id="cr6be_contactdetails" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cr6be_contactdetails" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3e343a33-66a2-4582-a59e-7e8e5b2aa309}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="66%">
+              <sections>
+                <section showlabel="false" showbar="false" id="{5e0fece9-7046-46e1-9783-53b312606b13}" IsUserDefined="0" height="auto">
+                  <labels>
+                    <label description="Notes" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" rowspan="15" auto="false" id="{1946ee89-9c72-46dc-9d3e-dac9ed33d54f}">
+                        <labels>
+                          <label description="Note Text" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-c143-495e-a496-c962e5b4488e}">
+                          <parameters>
+                            <DefaultTabId>NotesTab</DefaultTabId>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row height="auto" />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <Navigation>
+        <NavBar></NavBar>
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
+      <controlDescriptions />
+      <formLibraries>
+        <Library name="cr6be_ContactUS" libraryUniqueId="{44be4d91-853a-bd9c-bea3-6a79705e6c98}" />
+      </formLibraries>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>
