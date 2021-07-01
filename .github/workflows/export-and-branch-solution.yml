@@ -33,21 +33,21 @@ jobs:
         environment-url: 'https://wipro0014.crm.dynamics.com'
         user-name: 'NA@wipro0014.onmicrosoft.com'
         password-secret: ${{ secrets.password }}
-        solution-name: Demosolution
-        solution-output-file: out/exported/Demosolution.zip
+        solution-name: Release1
+        solution-output-file: out/exported/Release1.zip
 
     - name: unpack-solution action
       uses: microsoft/powerplatform-actions/unpack-solution@v0
       with:
-        solution-file: out/exported/Demosolution.zip
-        solution-folder: out/solutions/Demosolution
+        solution-file: out/exported/Release1.zip
+        solution-folder: out/solutions/Release1
         solution-type: 'Unmanaged'
         overwrite-files: true
 
     - name: branch-solution, prepare it for a PullRequest
       uses: microsoft/powerplatform-actions/branch-solution@v0
       with:
-        solution-folder: out/solutions/Demosolution
-        solution-target-folder: solutions/Demosolution
+        solution-folder: out/solutions/Release1
+        solution-target-folder: solutions/Release1
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         allow-empty-commit: true
