@@ -22,35 +22,35 @@ jobs:
     - name: Pack solution
       uses: microsoft/powerplatform-actions/pack-solution@v0
       with:
-        solution-folder: solutions/Release1
-        solution-file: out/solutions/Release1.zip
+        solution-folder: solutions/Testing
+        solution-file: out/solutions/Testing.zip
         solution-type: Unmanaged
 
     - name: Import solution as unmanaged to build env
       uses: microsoft/powerplatform-actions/import-solution@v0
       with:
-        environment-url: 'https://wipro0014dev.crm.dynamics.com'
+        environment-url: 'https://wipro0014.crm.dynamics.com'
         user-name: 'na@wipro0014.onmicrosoft.com'
         password-secret: 'Test@123'
-        solution-file: out/solutions/Release1.zip
+        solution-file: out/solutions/Testing.zip
         force-overwrite: true
         publish-changes: true
 
     - name: Export solution as managed
       uses: microsoft/powerplatform-actions/export-solution@v0
       with:
-        environment-url: 'https://wipro0014dev.crm.dynamics.com'
+        environment-url: 'https://wipro0014.crm.dynamics.com'
         user-name: 'na@wipro0014.onmicrosoft.com'
         password-secret: 'Test@123'
-        solution-name: Release1
+        solution-name: Testing
         managed: true
-        solution-output-file: out/ship/Release1.zip
+        solution-output-file: out/ship/Testing.zip
 
     - name: Upload the ready to ship solution to GH artifact store
       uses: actions/upload-artifact@v2
       with:
         name: managedSolutions
-        path: out/ship/Release1.zip
+        path: out/ship/Testing.zip
 
   release-to-staging:
     needs: [ convert-to-managed ]
@@ -72,9 +72,9 @@ jobs:
     - name: Import solution to prod env
       uses: microsoft/powerplatform-actions/import-solution@v0
       with:
-        environment-url: 'https://wipro0014dev.crm.dynamics.com'
+        environment-url: 'https://wipro0014.crm.dynamics.com'
         user-name: 'na@wipro0014.onmicrosoft.com'
         password-secret: 'Test@123'
-        solution-file: out/release/Release1.zip
+        solution-file: out/release/Testing.zip
         force-overwrite: true
         publish-changes: true
