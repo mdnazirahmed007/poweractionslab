@@ -29,7 +29,7 @@ jobs:
     - name: Import solution as unmanaged to build env
       uses: microsoft/powerplatform-actions/import-solution@v0
       with:
-        environment-url: 'https://wipro0014dev.crm.dynamics.com'
+        environment-url: 'https://wipro0014.crm.dynamics.com'
         user-name: 'na@wipro0014.onmicrosoft.com'
         password-secret: 'Test@123'
         solution-file: out/solutions/Testing.zip
@@ -39,7 +39,7 @@ jobs:
     - name: Export solution as managed
       uses: microsoft/powerplatform-actions/export-solution@v0
       with:
-        environment-url: 'https://wipro0014dev.crm.dynamics.com'
+        environment-url: 'https://wipro0014.crm.dynamics.com'
         user-name: 'na@wipro0014.onmicrosoft.com'
         password-secret: 'Test@123'
         solution-name: Testing
