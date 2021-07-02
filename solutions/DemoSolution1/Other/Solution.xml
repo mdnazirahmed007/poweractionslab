@@ -79,9 +79,7 @@
         </Address>
       </Addresses>
     </Publisher>
-    <RootComponents>
-      <RootComponent type="1" schemaName="dvn_test" behavior="0" />
-    </RootComponents>
+    <RootComponents />
     <MissingDependencies />
   </SolutionManifest>
 </ImportExportXml>
