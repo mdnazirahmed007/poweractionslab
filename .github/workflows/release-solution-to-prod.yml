@@ -5,12 +5,45 @@ name: release-solution-to-prod
 
 on:
   workflow_dispatch:
+    inputs:
+      # Change this value
+      solution_name:
+        description: 'name of the solution to worked on from Power Platform'
+        required: true
+        default: ALMLab
+       #Do Not change these values
+      solution_shipping_folder:
+        description: 'folder name for staging the exported solution *do not change*'
+        required: true
+        default: out/ship/
+      solution_outbound_folder:
+        description: 'staging the unpacked solution folder before check-in *do not change*'
+        required: true
+        default: out/solutions/
+      solution_source_folder: 
+       description: 'folder name to be created and checked in *do not change*'
+       required: true
+       default: solutions/
+      solution_release_folder:
+       description: 'folder where the released binaries are going to be hosted *do not change*'
+       required: true
+       default: out/release
   release:
     types: [created]
+  
+
+env:
+#edit your values here
+  BUILD_ENVIRONMENT_URL: 'https://divinehubtest.crm6.dynamics.com'
+  PRODUCTION_ENVIRONMENT_URL: 'https://divinehub.crm6.dynamics.com'
+  CLIENT_ID: 'db8a71d6-0a90-4f6c-b4a3-78b32f51f8cc'
+  TENANT_ID: '330df886-8121-40a6-82fb-4854a057ffcb'
+  PRODCLIENT_ID: 'db8a71d6-0a90-4f6c-b4a3-78b32f51f8cc'
 
 jobs:
   convert-to-managed:
     runs-on: windows-latest
+    # or you can say runs-on: ubuntu-latest
     env:
       RUNNER_DEBUG: 1
 
@@ -20,37 +53,39 @@ jobs:
         lfs: true
 
     - name: Pack solution
-      uses: microsoft/powerplatform-actions/pack-solution@v0
+      uses: microsoft/powerplatform-actions/pack-solution@0.4.0
       with:
-        solution-folder: solutions/Testing
-        solution-file: out/solutions/Testing.zip
+        solution-folder: ${{ github.event.inputs.solution_source_folder}}/${{ github.event.inputs.solution_name }}
+        solution-file: ${{ github.event.inputs.solution_outbound_folder}}/${{ github.event.inputs.solution_name }}.zip
         solution-type: Unmanaged
 
     - name: Import solution as unmanaged to build env
-      uses: microsoft/powerplatform-actions/import-solution@v0
+      uses: microsoft/powerplatform-actions/import-solution@0.4.0
       with:
-        environment-url: 'https://wipro0014.crm.dynamics.com'
-        user-name: 'na@wipro0014.onmicrosoft.com'
-        password-secret: 'Test@123'
-        solution-file: out/solutions/Testing.zip
+        environment-url: ${{env.BUILD_ENVIRONMENT_URL}}
+        app-id: ${{env.CLIENT_ID}}
+        client-secret: ${{ secrets.SOURCESECRETKEY }}
+        tenant-id: ${{env.TENANT_ID}}
+        solution-file: ${{ github.event.inputs.solution_outbound_folder}}/${{ github.event.inputs.solution_name }}.zip
         force-overwrite: true
         publish-changes: true
 
     - name: Export solution as managed
-      uses: microsoft/powerplatform-actions/export-solution@v0
+      uses: microsoft/powerplatform-actions/export-solution@0.4.0
       with:
-        environment-url: 'https://wipro0014.crm.dynamics.com'
-        user-name: 'na@wipro0014.onmicrosoft.com'
-        password-secret: 'Test@123'
-        solution-name: Testing
+        environment-url: ${{env.BUILD_ENVIRONMENT_URL}}
+        app-id: ${{env.CLIENT_ID}}
+        client-secret: ${{ secrets.SOURCESECRETKEY }}
+        tenant-id: ${{env.TENANT_ID}}
+        solution-name: ${{ github.event.inputs.solution_name }}
         managed: true
-        solution-output-file: out/ship/Testing.zip
+        solution-output-file: ${{ github.event.inputs.solution_shipping_folder}}/${{ github.event.inputs.solution_name }}.zip
 
     - name: Upload the ready to ship solution to GH artifact store
       uses: actions/upload-artifact@v2
       with:
         name: managedSolutions
-        path: out/ship/Testing.zip
+        path: ${{ github.event.inputs.solution_shipping_folder}}/${{ github.event.inputs.solution_name }}.zip
 
   release-to-staging:
     needs: [ convert-to-managed ]
@@ -67,14 +102,14 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: managedSolutions
-        path: out/release/
-    
+        path: ${{ github.event.inputs.solution_release_folder}}
     - name: Import solution to prod env
-      uses: microsoft/powerplatform-actions/import-solution@v0
+      uses: microsoft/powerplatform-actions/import-solution@0.4.0
       with:
-        environment-url: 'https://wipro0014.crm.dynamics.com'
-        user-name: 'na@wipro0014.onmicrosoft.com'
-        password-secret: 'Test@123'
-        solution-file: out/release/Testing.zip
+        environment-url: ${{env.PRODUCTION_ENVIRONMENT_URL}}
+        app-id: ${{env.PRODCLIENT_ID}}
+        client-secret: ${{ secrets.DESTINATIONSECRETKEY }}
+        tenant-id: ${{env.TENANT_ID}}
+        solution-file: ${{ github.event.inputs.solution_release_folder}}/${{ github.event.inputs.solution_name }}.zip
         force-overwrite: true
         publish-changes: true
