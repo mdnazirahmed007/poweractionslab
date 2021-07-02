@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{3e7e4c3a-8e2e-4723-93bc-21c51d1d3184}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="dvn_name" select="1" icon="1" preview="1">
+        <row name="result" id="dvn_testid">
+          <cell name="dvn_name" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="dvn_test">
+          <attribute name="dvn_testid" />
+          <attribute name="dvn_name" />
+          <attribute name="createdon" />
+          <order attribute="dvn_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Tests" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
