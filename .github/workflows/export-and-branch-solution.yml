@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
     inputs:
       # Change this value
-      solution_name:
-        description: 'Testing'
+      solution_name: 
+        description: 'name of the solution to worked on from Power Platform'
         required: true
         default: ALMLab
        #Do Not change these values
@@ -25,7 +25,7 @@ on:
        default: solutions/
 env:
 #edit your values here
-  ENVIRONMENT_URL: 'https://wipro0014.crm.dynamics.com'
+  ENVIRONMENT_URL: 'https://divinehubtest.crm6.dynamics.com'
   CLIENT_ID: 'db8a71d6-0a90-4f6c-b4a3-78b32f51f8cc'
   TENANT_ID: '330df886-8121-40a6-82fb-4854a057ffcb'
 
