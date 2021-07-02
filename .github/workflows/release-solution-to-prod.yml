@@ -38,7 +38,7 @@ env:
   PRODUCTION_ENVIRONMENT_URL: 'https://divinehub.crm6.dynamics.com'
   CLIENT_ID: 'db8a71d6-0a90-4f6c-b4a3-78b32f51f8cc'
   TENANT_ID: '330df886-8121-40a6-82fb-4854a057ffcb'
-  PRODCLIENT_ID: 'db8a71d6-0a90-4f6c-b4a3-78b32f51f8cc'
+  PRODCLIENT_ID: '8dcabf1f-a052-475b-9ef0-9d8fa0d8502c'
 
 jobs:
   convert-to-managed:
